@@ -3,7 +3,7 @@ import { changeSearchField } from "../store";
 const NavBar = () => {
   const dispatch = useDispatch();
   const { searchValue } = useSelector((state) => {
-    console.log(state);
+    // console.log(state);
     return { searchValue: state.searchField };
   });
   const handleChange = (event) => {
