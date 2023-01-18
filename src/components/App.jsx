@@ -6,7 +6,7 @@ const App = () => {
     <div>
       App
       <NavBar />
-      <Categories list={["Men", "Women", "Kids"]} />
+      <Categories />
       <Slider />
     </div>
   );
