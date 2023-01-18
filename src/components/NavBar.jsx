@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet, Link } from "react-router-dom";
 import { changeSearchField } from "../store";
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -11,16 +12,20 @@ const NavBar = () => {
   };
   //   console.log(user);
   return (
-    <div>
-      <input value={searchValue} onChange={handleChange} />
-      <button>Search</button>
-      <button>WishList</button>
-      <button>Profile</button>
-      <button>Cart</button>
-      <button>Login</button>
-      <button>Register</button>
-      <button>Logout</button>
-    </div>
+    <>
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/category">Categories</Link>
+        <input value={searchValue} onChange={handleChange} />
+        <button>Search</button>
+        <button>WishList</button>
+        <button>Profile</button>
+        <Link to="/cart">Cart</Link>
+        <Link to="/login">Login</Link>
+        <button>Logout</button>
+      </div>
+      <Outlet />
+    </>
   );
 };
 export default NavBar;

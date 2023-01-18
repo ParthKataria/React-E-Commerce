@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { headers } from "../../API_KEYS";
 const ItemDetailsApi = createApi({
   reducerPath: "item-details",
   baseQuery: fetchBaseQuery({
@@ -12,11 +13,7 @@ const ItemDetailsApi = createApi({
           return {
             url: "/",
             params: { lang: "en", country: "us", productcode: code },
-            headers: {
-              "X-RapidAPI-Key":
-                "4c9125aad4msh4987f593ab36d6ep1298acjsnf4fa651a01bb",
-              "X-RapidAPI-Host": "apidojo-hm-hennes-mauritz-v1.p.rapidapi.com",
-            },
+            headers: headers,
           };
         },
       }),

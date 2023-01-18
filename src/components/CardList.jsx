@@ -13,6 +13,6 @@ const CardList = ({ category }) => {
     content = results.map((item) => <Card key={item.code} item={item} />);
   }
   return <div>{content}</div>;
-  return <div>CardList</div>;
+  //   return <div>CardList</div>;
 };
 export default CardList;
