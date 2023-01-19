@@ -11,6 +11,7 @@ const CardList = ({ category }) => {
   } else {
     const { results } = data;
     content = results.map((item) => <Card key={item.code} item={item} />);
+    console.log(data);
   }
   return <div>{content}</div>;
   //   return <div>CardList</div>;

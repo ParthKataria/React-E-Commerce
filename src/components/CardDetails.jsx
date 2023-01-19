@@ -1,4 +1,5 @@
 import { useFetchItemDetailsQuery } from "../store";
+import { useParams } from "react-router";
 const CardDetails = ({ item }) => {
   //   console.log(item);
   const { articles, images } = item;

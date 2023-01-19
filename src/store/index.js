@@ -7,9 +7,11 @@ import {
   searchFieldReducer,
   changeSearchField,
 } from "./slices/searchFieldSlice";
+import { userReducer, changeUser } from "./slices/userSlice";
 const store = configureStore({
   reducer: {
     searchField: searchFieldReducer,
+    user: userReducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
     [ItemsApi.reducerPath]: ItemsApi.reducer,
     [ItemDetailsApi.reducerPath]: ItemDetailsApi.reducer,
@@ -25,4 +27,4 @@ setupListeners(store.dispatch);
 export { useFetchCategoriesQuery } from "./api/categoryApi";
 export { useFetchItemsQuery } from "./api/ItemsApi";
 export { useFetchItemDetailsQuery } from "./api/ItemDetailsApi";
-export { store, changeSearchField };
+export { store, changeSearchField, changeUser };

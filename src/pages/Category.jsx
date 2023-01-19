@@ -7,10 +7,12 @@ const Categories = () => {
   if (isFetching) content = "Loading...";
   else {
     content = data.map((category) => {
-      // console.log(category.CatName);
+      //   console.log(category);
+      const { tagCodes, CatName } = category;
+      const [categoryName] = tagCodes;
       return (
         <div>
-          <Link to={`/category/${category.CatName}`}>{category.CatName}</Link>
+          <Link to={`/category/${categoryName}`}>{CatName}</Link>
         </div>
       );
     });

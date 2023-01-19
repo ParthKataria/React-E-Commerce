@@ -8,6 +8,7 @@ import Category from "../pages/Category";
 import Login from "../pages/Login";
 import CategoryElement from "../pages/CategoryElement";
 import ErrorPage from "../pages/ErrorPage";
+// import CardDetails from "./CardDetails";
 const App = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="login" element={<Login />} />
         <Route path="category" element={<Category />} />
         <Route path="category/:id" element={<CategoryElement />} />
+        {/* <Route path="category/:id/:productId" element={<CardDetails />} /> */}
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

@@ -13,12 +13,11 @@ const ItemsApi = createApi({
           return {
             url: "/",
             params: {
-              country: "us",
+              country: "in",
               lang: "en",
               currentpage: "0",
               pagesize: "30",
               categories: category,
-              concepts: "H&M MAN",
             },
             headers: headers,
           };
