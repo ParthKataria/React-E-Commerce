@@ -13,7 +13,7 @@ const CardList = ({ category }) => {
     content = results.map((item) => <Card key={item.code} item={item} />);
     console.log(data);
   }
-  return <div>{content}</div>;
+  return <div className="grid grid-cols-6">{content}</div>;
   //   return <div>CardList</div>;
 };
 export default CardList;

@@ -1,22 +1,25 @@
-import { useFetchItemDetailsQuery } from "../store";
 import { useParams } from "react-router";
+import { useFetchItemDetailsQuery } from "../store";
 const CardDetails = ({ item }) => {
-  //   console.log(item);
-  const { articles, images } = item;
-  //   console.log(articles);
-  const { code } = articles[0];
-  //   console.log(images);
-  const [{ url }, ...rest] = images;
-  //   console.log(code);
-  const { data, isFetching, error } = useFetchItemDetailsQuery(code);
+  //   const val = useSelector((state) => console.log(state));
+  const { id } = useParams();
+  //   console.log(id, item);
+  const { data, isFetching, error } = useFetchItemDetailsQuery(id);
+
   let content;
   if (isFetching) {
     content = "Loading...";
   } else {
-    // const { results } = data;
-    content = <img src={url} />;
+    const { product } = data;
+    const { name, description } = product;
+    console.log(data);
+    content = (
+      <div>
+        {name}
+        <div>{description}</div>
+      </div>
+    );
   }
-  //   console.log(data);
-  return <div>{content}</div>;
+  return content;
 };
 export default CardDetails;
