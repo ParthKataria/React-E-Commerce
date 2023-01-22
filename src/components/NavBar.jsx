@@ -2,6 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { changeSearchField, changeUser } from "../store";
 import { signInWithGooglePopup } from "../firebase/firebaseAuth";
+import {
+  AiOutlineShoppingCart,
+  AiOutlineHeart,
+  AiOutlineSearch,
+} from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -10,7 +16,7 @@ const NavBar = () => {
       const { _tokenResponse } = await signInWithGooglePopup();
       //   console.log(_tokenResponse);
       dispatch(changeUser(_tokenResponse));
-      navigate("/");
+      // navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -21,6 +27,7 @@ const NavBar = () => {
   });
   const handleLogout = () => {
     dispatch(changeUser(null));
+    navigate("/");
   };
   const handleChange = (event) => {
     dispatch(changeSearchField(event.target.value));
@@ -31,33 +38,98 @@ const NavBar = () => {
   }
   return (
     <>
-      <div className="bg-gray-400 h-16 p-5 flex lex-row justify-items-end">
-        <Link className="ml-5" to="/">
+      {/* <nav className="bg-gray-400 md:flex md:items-center md:justify-start">
+        <Link className="ml-5 " to="/">
           Home
         </Link>
         <Link className="ml-5" to="/category">
           Categories
         </Link>
         <input className="" value={searchValue} onChange={handleChange} />
-        <button>Search</button>
-        {LoggedIn && <button className="ml-5">WishList</button>}
-        {LoggedIn && <button className="ml-5">Profile</button>}
+        <div className="inline">
+          <AiOutlineSearch />
+        </div>
         {LoggedIn && (
-          <Link className="ml-5" to="/cart">
-            Cart
+          <div className="ml-5">
+            <AiOutlineHeart />
+          </div>
+        )}
+        {LoggedIn && (
+          <button className="ml-5 ">
+            <CgProfile />
+          </button>
+        )}
+        {LoggedIn && (
+          <Link className="ml-5 " to="/cart">
+            <AiOutlineShoppingCart />
           </Link>
         )}
         {!LoggedIn && (
-          <button className="ml-5 " onClick={logUser}>
+          <div className="ml-5 justify-self-end" onClick={logUser}>
             Login
-          </button>
+          </div>
         )}
         {LoggedIn && (
-          <button className="ml-5" onClick={handleLogout}>
+          <button className="ml-5 " onClick={handleLogout}>
             Logout
           </button>
         )}
-      </div>
+      </nav> */}
+      <nav class="p-5 bg-gray-400 shadow md:flex md:items-center md:justify-between">
+        <div class="flex justify-between items-center ">
+          <Link to="/" class=" mx-4 my-6 md:my-0 text-xl hover:text-white">
+            HOME
+          </Link>
+          <Link
+            to="/category"
+            class="mx-4 my-6 md:my-0 text-xl hover:text-white"
+          >
+            CATEGORIES
+          </Link>
+          <input
+            class=" my-6 md:my-0 text-xl hover:text-white rounded width-[400px]"
+            value={searchValue}
+            onChange={handleChange}
+          />
+          <button class="">
+            <AiOutlineSearch size={30} />
+          </button>
+        </div>
+
+        <div class="md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100  top-[-400px] transition-all ease-in duration-500">
+          {LoggedIn && (
+            <button className="ml-5 ">
+              <AiOutlineHeart size={30} />
+            </button>
+          )}
+          {LoggedIn && (
+            <button className="ml-5 ">
+              <CgProfile size={30} />
+            </button>
+          )}
+          {LoggedIn && (
+            <Link className="ml-5 " to="/cart">
+              <AiOutlineShoppingCart size={30} />
+            </Link>
+          )}
+          {!LoggedIn && (
+            <button
+              class="bg-black text-white duration-500 px-6 py-2 mx-4 hover:bg-gray-600"
+              onClick={logUser}
+            >
+              Login
+            </button>
+          )}
+          {LoggedIn && (
+            <button
+              class="bg-black text-white duration-500 px-6 py-2 mx-4 hover:bg-gray-600"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          )}
+        </div>
+      </nav>
       <Outlet />
     </>
   );

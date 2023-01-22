@@ -2,6 +2,7 @@ import { useFetchImagesQuery } from "../store";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 import { useState } from "react";
+import Skeleton from "./Skeleton";
 const Slider = ({ category }) => {
   const { data, isFetching, error } = useFetchImagesQuery(category);
   const [index, setIndex] = useState(0);
@@ -10,7 +11,12 @@ const Slider = ({ category }) => {
   };
   let content;
   if (isFetching) {
-    content = "Loading...";
+    content = (
+      <Skeleton
+        times={3}
+        names={"w-full h-full rounded-2xl bg-center bg-cover duration-500"}
+      />
+    );
   } else {
     console.log(data);
     const { total, results } = data;

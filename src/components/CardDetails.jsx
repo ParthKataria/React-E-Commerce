@@ -1,6 +1,10 @@
 import { useParams } from "react-router";
 import { useFetchItemDetailsQuery } from "../store";
-const CardDetails = ({ item }) => {
+import { useLocation } from "react-router";
+const CardDetails = () => {
+  const { state } = useLocation();
+  const { images } = state;
+  console.log(images);
   //   const val = useSelector((state) => console.log(state));
   const { id } = useParams();
   //   console.log(id, item);
@@ -15,6 +19,7 @@ const CardDetails = ({ item }) => {
     console.log(data);
     content = (
       <div>
+        <img src={images[0].url} />
         {name}
         <div>{description}</div>
       </div>

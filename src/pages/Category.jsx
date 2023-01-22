@@ -5,14 +5,15 @@ const Categories = () => {
   const { data, isFetching, error } = useFetchCategoriesQuery();
   // console.log(data);
   let content;
-  if (isFetching) content = <Skeleton times={20} />;
+  if (isFetching)
+    content = <Skeleton times={20} names={"h-80 col-span-1 m-5 bg-zinc-200"} />;
   else {
-    content = data.map((category, id) => {
+    content = data.map((category) => {
       console.log(category);
       const { tagCodes, CatName } = category;
       const [categoryName] = tagCodes;
       return (
-        <div className={`h-80 bg-red col-span-${(id % 2) + 1} m-5 bg-zinc-200`}>
+        <div className={`h-80 col-span-1 m-5 bg-zinc-200`}>
           <Link to={`/category/${categoryName}`}>{CatName}</Link>
         </div>
       );
