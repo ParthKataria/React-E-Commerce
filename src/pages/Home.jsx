@@ -3,8 +3,8 @@ const Home = () => {
   const categories = ["Clothes", "Gadgets", "Electronics"];
   const content = categories.map((category) => {
     return (
-      <div className="m-5">
-        <h1 className="text-center text-9xl">{category}</h1>
+      <div className="">
+        <h1 className="mt-5 text-center text-8xl">{category}</h1>
         <Slider category={category} />
       </div>
     );

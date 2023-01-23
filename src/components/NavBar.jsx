@@ -14,15 +14,12 @@ const NavBar = () => {
   const logUser = async () => {
     try {
       const { _tokenResponse } = await signInWithGooglePopup();
-      //   console.log(_tokenResponse);
       dispatch(changeUser(_tokenResponse));
-      // navigate("/");
     } catch (err) {
       console.log(err);
     }
   };
   const { searchValue, user } = useSelector((state) => {
-    // console.log(state);
     return { searchValue: state.searchField, user: state.user };
   });
   const handleLogout = () => {
@@ -38,7 +35,7 @@ const NavBar = () => {
   }
   return (
     <>
-      {/* <nav className="bg-gray-400 md:flex md:items-center md:justify-start">
+      <nav className="bg-gray-400 h-20  md:flex md:items-center md:justify-start ">
         <Link className="ml-5 " to="/">
           Home
         </Link>
@@ -65,70 +62,15 @@ const NavBar = () => {
           </Link>
         )}
         {!LoggedIn && (
-          <div className="ml-5 justify-self-end" onClick={logUser}>
+          <button className="ml-5 justify-self-end" onClick={logUser}>
             Login
-          </div>
+          </button>
         )}
         {LoggedIn && (
           <button className="ml-5 " onClick={handleLogout}>
             Logout
           </button>
         )}
-      </nav> */}
-      <nav class="p-5 bg-gray-400 shadow md:flex md:items-center md:justify-between">
-        <div class="flex justify-between items-center ">
-          <Link to="/" class=" mx-4 my-6 md:my-0 text-xl hover:text-white">
-            HOME
-          </Link>
-          <Link
-            to="/category"
-            class="mx-4 my-6 md:my-0 text-xl hover:text-white"
-          >
-            CATEGORIES
-          </Link>
-          <input
-            class=" my-6 md:my-0 text-xl hover:text-white rounded width-[400px]"
-            value={searchValue}
-            onChange={handleChange}
-          />
-          <button class="">
-            <AiOutlineSearch size={30} />
-          </button>
-        </div>
-
-        <div class="md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100  top-[-400px] transition-all ease-in duration-500">
-          {LoggedIn && (
-            <button className="ml-5 ">
-              <AiOutlineHeart size={30} />
-            </button>
-          )}
-          {LoggedIn && (
-            <button className="ml-5 ">
-              <CgProfile size={30} />
-            </button>
-          )}
-          {LoggedIn && (
-            <Link className="ml-5 " to="/cart">
-              <AiOutlineShoppingCart size={30} />
-            </Link>
-          )}
-          {!LoggedIn && (
-            <button
-              class="bg-black text-white duration-500 px-6 py-2 mx-4 hover:bg-gray-600"
-              onClick={logUser}
-            >
-              Login
-            </button>
-          )}
-          {LoggedIn && (
-            <button
-              class="bg-black text-white duration-500 px-6 py-2 mx-4 hover:bg-gray-600"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          )}
-        </div>
       </nav>
       <Outlet />
     </>

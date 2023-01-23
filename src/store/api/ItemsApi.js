@@ -9,7 +9,7 @@ const ItemsApi = createApi({
   endpoints(builder) {
     return {
       fetchItems: builder.query({
-        query: (category) => {
+        query: (categories) => {
           return {
             url: "/",
             params: {
@@ -17,7 +17,7 @@ const ItemsApi = createApi({
               lang: "en",
               currentpage: "0",
               pagesize: "30",
-              categories: category,
+              categories: categories,
             },
             headers: headers,
           };

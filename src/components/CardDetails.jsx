@@ -4,10 +4,7 @@ import { useLocation } from "react-router";
 const CardDetails = () => {
   const { state } = useLocation();
   const { images } = state;
-  console.log(images);
-  //   const val = useSelector((state) => console.log(state));
   const { id } = useParams();
-  //   console.log(id, item);
   const { data, isFetching, error } = useFetchItemDetailsQuery(id);
 
   let content;

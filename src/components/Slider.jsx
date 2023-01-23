@@ -24,7 +24,6 @@ const Slider = ({ category }) => {
       content = "No items found";
     } else {
       const resultsSize = results.length;
-      // console.log(index);
       content = (
         <div className="max-w-[1600px] h-[780px] w-full m-auto py-16 px-4 relative group">
           <div
@@ -62,8 +61,6 @@ const Slider = ({ category }) => {
         </div>
       );
     }
-
-    // console.log(results);
   }
   return <div>{content}</div>;
 };
