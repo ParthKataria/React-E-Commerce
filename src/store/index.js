@@ -4,6 +4,7 @@ import { categoryApi } from "./api/categoryApi";
 import { ItemsApi } from "./api/ItemsApi";
 import { ItemDetailsApi } from "./api/ItemDetailsApi";
 import { SliderImages } from "./api/SliderImages";
+import { ItemsReducer } from "./slices/ItemsSlice";
 import {
   searchFieldReducer,
   changeSearchField,
@@ -21,7 +22,9 @@ const store = configureStore({
     searchField: searchFieldReducer,
     user: userReducer,
     cart: cartReducer,
+    itemslist: ItemsReducer,
     wishlist: wishlistReducer,
+
     [categoryApi.reducerPath]: categoryApi.reducer,
     [ItemsApi.reducerPath]: ItemsApi.reducer,
     [ItemDetailsApi.reducerPath]: ItemDetailsApi.reducer,
@@ -49,3 +52,4 @@ export {
   modifyElement,
   removeElement,
 };
+export * from "./api/fetchItems";

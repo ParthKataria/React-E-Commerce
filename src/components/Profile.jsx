@@ -20,7 +20,7 @@ const Profile = () => {
     setDropdown(!dropdown);
   };
   const { user } = useSelector((state) => {
-    return { searchValue: state.searchField, user: state.user };
+    return { user: state.user };
   });
   const { firstName, lastName, photoUrl } = user;
   return (

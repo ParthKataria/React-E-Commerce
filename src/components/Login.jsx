@@ -12,7 +12,8 @@ const Login = () => {
       dispatch(changeUser(_tokenResponse));
       navigate("/");
     } catch (err) {
-      console.log(err);
+      navigate("/");
+      alert(err);
     }
   };
   return <Button onClick={logUser}>LOGIN</Button>;

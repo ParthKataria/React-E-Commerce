@@ -24,7 +24,7 @@ const Cart = () => {
     // console.log(item);
     return (
       <div>
-        <Card item={item}>
+        <Card url={item.images[0].url}>
           <div className="text-center bg-gray-400 mt-2 text-white">
             COST ${item.price.value}
           </div>

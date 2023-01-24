@@ -12,7 +12,6 @@ const images = [
 ];
 const Categories = () => {
   const { data, isFetching, error } = useFetchCategoriesQuery();
-  // console.log(data);
   let content;
   if (isFetching)
     content = (
@@ -25,7 +24,7 @@ const Categories = () => {
     if (error) {
       content = (
         <ErrorPage>
-          <div>error</div>
+          <div>{error.data.message}</div>
         </ErrorPage>
       );
     } else {
@@ -33,21 +32,19 @@ const Categories = () => {
         const { tagCodes, CatName } = category;
         const [categoryName] = tagCodes;
         return (
-          <>
-            <div
-              className={`grid h-80 col-span-1 m-5 bg-zinc-200 bg-cover justify-items-center`}
-              style={{ backgroundImage: `url(${images[id % 5]})` }}
-            >
-              <Link className="m-auto" to={`/category/${categoryName}`}>
-                <Button>{CatName}</Button>
-              </Link>
-            </div>
-          </>
+          <div
+            className={`grid h-80 col-span-1 m-5 bg-zinc-200 bg-cover justify-items-center`}
+            style={{ backgroundImage: `url(${images[id % 5]})` }}
+            key={id}
+          >
+            <Link className="m-auto" to={`/category/${categoryName}`}>
+              <Button>{CatName}</Button>
+            </Link>
+          </div>
         );
       });
     }
   }
-  // const content = list.map((category) => <button>{category}</button>);
   return <div className="grid md:grid-cols-3 grid-cols-1">{content}</div>;
 };
 export default Categories;
