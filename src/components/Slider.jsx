@@ -18,7 +18,7 @@ const Slider = ({ category }) => {
       />
     );
   } else {
-    console.log(data);
+    // console.log(data);
     const { total, results } = data;
     if (total == 0) {
       content = "No items found";

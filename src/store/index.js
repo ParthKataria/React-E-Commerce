@@ -9,7 +9,12 @@ import {
   changeSearchField,
 } from "./slices/searchFieldSlice";
 import { userReducer, changeUser } from "./slices/userSlice";
-import { cartReducer, addToCart } from "./slices/CartSlice";
+import {
+  cartReducer,
+  addToCart,
+  modifyElement,
+  removeElement,
+} from "./slices/CartSlice";
 import { wishlistReducer, addToWishlist } from "./slices/WishlistSlice";
 const store = configureStore({
   reducer: {
@@ -35,4 +40,12 @@ export { useFetchImagesQuery } from "./api/SliderImages";
 export { useFetchCategoriesQuery } from "./api/categoryApi";
 export { useFetchItemsQuery } from "./api/ItemsApi";
 export { useFetchItemDetailsQuery } from "./api/ItemDetailsApi";
-export { store, changeSearchField, changeUser, addToCart, addToWishlist };
+export {
+  store,
+  changeSearchField,
+  changeUser,
+  addToCart,
+  addToWishlist,
+  modifyElement,
+  removeElement,
+};
